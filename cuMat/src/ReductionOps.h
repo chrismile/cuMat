@@ -9,7 +9,12 @@
 #include "Errors.h"
 
 #if CUMAT_NVCC==1
+#include <cuda_runtime_api.h>
+#if CUDART_VERSION < 11020
 #include "../../third-party/cub/cub.cuh"
+#else
+#include <cub/cub.cuh>
+#endif
 #endif
 
 #ifndef CUMAT_CUB_DEBUG

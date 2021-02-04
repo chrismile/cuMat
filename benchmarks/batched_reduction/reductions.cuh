@@ -2,8 +2,14 @@
 #define REDUCTIONS_BENCHMARK
 
 #include <cuMat/Core>
+#include <cuda_runtime_api.h>
+#if CUDART_VERSION < 11020
 #include <third-party/cub/device/device_reduce.cuh>
 #include <third-party/cub/block/block_reduce.cuh>
+#else
+#include <cub/device/device_reduce.cuh>
+#include <cub/block/block_reduce.cuh>
+#endif
 
 CUMAT_NAMESPACE_BEGIN
 

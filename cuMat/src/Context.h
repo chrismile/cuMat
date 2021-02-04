@@ -44,8 +44,12 @@
 #define CUMAT_CONTEXT_USE_CUB_ALLOCATOR 1
 
 #if CUMAT_CONTEXT_USE_CUB_ALLOCATOR==1
-//#include <cub/util_allocator.cuh>
+#include <cuda_runtime_api.h>
+#if CUDART_VERSION < 11020
 #include "../../third-party/cub/util_allocator.cuh" //No need to add cub to the global include (would clash e.g. with other Eigen versions)
+#else
+#include <cub/util_allocator.cuh>
+#endif
 #endif
 
 CUMAT_NAMESPACE_BEGIN

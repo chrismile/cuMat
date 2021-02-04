@@ -7,7 +7,12 @@
 #include "NumTraits.h"
 
 #include <cmath>
+#include <cuda_runtime_api.h>
+#if CUDART_VERSION < 11020
 #include "../../third-party/cub/util_type.cuh"
+#else
+#include <cub/util_type.cuh>
+#endif
 
 CUMAT_NAMESPACE_BEGIN
 
